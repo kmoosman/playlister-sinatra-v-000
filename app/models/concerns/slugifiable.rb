@@ -1,9 +1,15 @@
 require_relative 'concerns/slugifiable'
 
-class Song < ActiveRecord::Base
-  include Slugifiable::InstanceMethods
-  extend Slugifiable::ClassMethods
-  belongs_to :artist
-  has_many :song_genres
-  has_many :genres, through: :song_genres
+module Slugifiable
+  module InstanceMethods
+    def slug
+      name.parameterize
+    end
+  end
+  module ClassMethods
+    def find_by_slug(slug)
+      # is there a better way to do this?
+      self.all.detect {|i| i.name.parameterize == slug}
+    end
+  end
 end
