@@ -8,7 +8,7 @@ class SongsController < ApplicationController
   get '/songs/:id' do
     binding.pry
     @song = Song.find(params[:id])
-    binding.pry
+    # binding.pry
   end
 
 
