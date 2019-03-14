@@ -1,4 +1,4 @@
-require_relative 'concerns/slugifiable'
+require_relative 'models/concerns/slugifiable'
 
 module Slugifiable
   module InstanceMethods
