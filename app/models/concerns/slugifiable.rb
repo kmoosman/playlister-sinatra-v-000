@@ -1,15 +1,13 @@
-module Slugifiable
+require_relative 'concerns/slugifiable'
 
-  module InstanceMethods
-    def slug
-      name.parameterize
-    end
+module InstanceMethods
+  def slug
+    name.parameterize
   end
-
-  module ClassMethods
-    def find_by_slug(slug)
-      self.all.detect {|i| i.name.parameterize == slug}
-    end
+end
+module ClassMethods
+  def find_by_slug(slug)
+    # is there a better way to do this?
+    self.all.detect {|i| i.name.parameterize == slug}
   end
-
 end
